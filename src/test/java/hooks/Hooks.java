@@ -1,10 +1,13 @@
 package hooks;
 
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import utilities.Driver;
+
+import java.time.Duration;
 
 public class Hooks {
 
@@ -22,13 +25,16 @@ public class Hooks {
     screenshoot alması amacıyla @After methodunu kullanacagız
      */
 
+    @Before
+    public void before_ui(){
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        Driver.getDriver().manage().window().maximize();
+    }
+
     @After
-    public void tearDown(Scenario scenario) {
-        final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-        if (scenario.isFailed()) {
-            scenario.attach(screenshot, "image/png", "screenshots");
-        }
+    public void tearDown() {
         Driver.closeDriver();
     }
+
 
 }

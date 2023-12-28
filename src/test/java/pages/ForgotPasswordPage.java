@@ -18,4 +18,20 @@ public class ForgotPasswordPage {
     @FindBy(xpath = "//*[@id='uyegirisi_Email']")
     public WebElement firstEmailButton;
 
+
+    @FindBy(xpath = "//*[@id='uyegirisi_Sifre']")
+    public WebElement firstPasswordButton;
+
+
+    @FindBy(xpath = "//*[text() = 'Şifremi Unuttum']")
+    public WebElement forgotPasswordButton;
+
+
+    @FindBy(xpath = "//*[@class = 'textform radius']")
+    public WebElement secondEmailButton;
+
+
+    @FindBy(xpath = "//*[@name = 'Gkodu']]")
+    public WebElement securityCodeButton;
+
 }
